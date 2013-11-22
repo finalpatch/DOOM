@@ -1,0 +1,13 @@
+mb_gcc_path = 'C:\\Users\\fengli\\Apps\\mb-gcc\\gnu\\microblaze\\nt\\bin'
+env = Environment(
+    tools = ['gcc', 'gnulink'],
+    ENV = {'PATH' : mb_gcc_path},
+    CC = 'mb-gcc',
+    LINK = 'mb-gcc',
+    CCFLAGS = '-g -O3 -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.00.b -mno-xl-soft-mul',
+    LINKFLAGS = '-g -mlittle-endian -Wl,-defsym,_STACK_SIZE=1048576 -Wl,-defsym,_HEAP_SIZE=16777216')
+
+
+env.VariantDir('build', '.', duplicate=0)
+files = Glob('#/*.c')
+env.Program("build/doom.elf", files)

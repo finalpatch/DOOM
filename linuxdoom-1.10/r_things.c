@@ -186,12 +186,7 @@ void R_InitSpriteDefs (char** namelist)
     int		end;
     int		patched;
 		
-    // count the number of sprite names
-    check = namelist;
-    while (*check != NULL)
-	check++;
-
-    numsprites = check-namelist;
+    numsprites = NUMSPRITES;
 	
     if (!numsprites)
 	return;
@@ -432,7 +427,11 @@ R_DrawVisSprite
 	texturecolumn = frac>>FRACBITS;
 #ifdef RANGECHECK
 	if (texturecolumn < 0 || texturecolumn >= SHORT(patch->width))
-	    I_Error ("R_DrawSpriteRange: bad texturecolumn");
+	{
+	    // I_Error ("R_DrawSpriteRange: bad texturecolumn");
+	    printf ("R_DrawSpriteRange: bad texturecolumn\n");
+		return;
+	}
 #endif
 	column = (column_t *) ((byte *)patch +
 			       LONG(patch->columnofs[texturecolumn]));

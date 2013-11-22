@@ -257,7 +257,7 @@ S_StartSoundAtVolume
   int		sfx_id,
   int		volume )
 {
-
+#if 0
   int		rc;
   int		sep;
   int		pitch;
@@ -392,6 +392,7 @@ S_StartSoundAtVolume
 				       sep,
 				       pitch,
 				       priority);
+  #endif
 }	
 
 void
