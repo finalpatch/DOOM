@@ -14,5 +14,11 @@ enum {
 	LCDEnable,
 	LCDLookupTable,
 	LCDFrameBuffer = LCDLookupTable + 0x100,
+    ButtonStatus,
 	NumOfRegisters,
+};
+
+enum {
+    TimerInterrupt,
+    ButtonInterrupt,
 };

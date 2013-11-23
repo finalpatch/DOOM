@@ -45,8 +45,6 @@ rcsid[] = "$Id: m_bbox.c,v 1.1 1997/02/03 22:45:10 b1 Exp $";
 #endif
 #include "i_system.h"
 
-#include "hal.h"
-
 
 int	mb_used = 6;
 
@@ -79,7 +77,7 @@ byte* I_ZoneBase (int*	size)
     return (byte *) malloc (*size);
 }
 
-
+extern int mb_gettime();
 
 //
 // I_GetTime
@@ -87,20 +85,7 @@ byte* I_ZoneBase (int*	size)
 //
 int  I_GetTime (void)
 {
-    static uint32_t counter = 0;
-    static uint32_t basetime = 0;
-    static uint32_t last = 0;
-    uint32_t newtime = fpga[TimerCounter];
-    if (basetime == 0)
-    {
-        basetime = newtime;
-        return 0;
-    }
-    uint32_t elapsed = (newtime - basetime) * TICRATE / FREQ;
-    if (elapsed == 0 && last != 0)
-        counter += (uint32_t)(-1) * TICRATE / FREQ;
-    last = elapsed;
-    return counter + elapsed;
+    return mb_gettime();
 }
 
 

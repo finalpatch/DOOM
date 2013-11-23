@@ -164,6 +164,8 @@ void D_PostEvent (event_t* ev)
 void D_ProcessEvents (void)
 {
     event_t*	ev;
+
+    asm("msrset r0, 0x0");
 	
     // IF STORE DEMO, DO NOT ACCEPT INPUT
     if ( ( gamemode == commercial )
@@ -177,6 +179,8 @@ void D_ProcessEvents (void)
 	    continue;               // menu ate the event
 	G_Responder (ev);
     }
+
+    asm("msrset r0, 0x2");
 }
 
 

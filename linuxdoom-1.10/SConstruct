@@ -4,8 +4,8 @@ env = Environment(
     ENV = {'PATH' : mb_gcc_path},
     CC = 'mb-gcc',
     LINK = 'mb-gcc',
-    CCFLAGS = '-g -O3 -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.00.b -mno-xl-soft-mul',
-    LINKFLAGS = '-g -mlittle-endian -Wl,-defsym,_STACK_SIZE=1048576 -Wl,-defsym,_HEAP_SIZE=16777216')
+    CCFLAGS = '-O3 -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.00.b -mno-xl-soft-mul -mno-xl-soft-div',
+    LINKFLAGS = '-mlittle-endian -Wl,-defsym,_STACK_SIZE=65536 -Wl,-defsym,_HEAP_SIZE=8388608')
 
 
 env.VariantDir('build', '.', duplicate=0)

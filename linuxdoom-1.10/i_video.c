@@ -38,6 +38,8 @@ rcsid[] = "$Id: i_x.c,v 1.6 1997/02/03 22:45:10 b1 Exp $";
 void I_InitGraphics(void)
 {
 	fpga[LCDEnable] = 1;
+	asm("msrset r0, 0x2");
+	fpga[InterruptControl] |= 1 << ButtonInterrupt;
 }
 
 void I_ShutdownGraphics(void)
@@ -50,14 +52,10 @@ boolean		mousemoved = false;
 
 void I_GetEvent(void)
 {
-    // TODO:
-	// event_t e;
-	// D_PostEvent(&e);
 }
 
 void I_StartTic (void)
 {
-	I_GetEvent();
 }
 
 
