@@ -1,10 +1,10 @@
-mb_gcc_path = 'C:\\Users\\fengli\\Apps\\mb-gcc\\gnu\\microblaze\\nt\\bin'
+import os
 env = Environment(
     tools = ['gcc', 'gnulink'],
-    ENV = {'PATH' : mb_gcc_path},
+    ENV   = {'PATH' : os.environ['PATH']},
     CC = 'mb-gcc',
     LINK = 'mb-gcc',
-    CCFLAGS = '-O3 -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.00.b -mno-xl-soft-mul -mno-xl-soft-div',
+    CCFLAGS = '-O3 -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.a -mno-xl-soft-mul -mno-xl-soft-div',
     LINKFLAGS = '-mlittle-endian -Wl,-defsym,_STACK_SIZE=65536 -Wl,-defsym,_HEAP_SIZE=8388608')
 
 
